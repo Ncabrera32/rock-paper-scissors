@@ -5,19 +5,19 @@ const winners = [];
 
 function game (){
     for(let i = 1; i <= 5; i++) {
-       playRound(); 
+       playRound(i); 
     }
     logWins();
 }
 
-function playRound(){
+function playRound(round){
 const playerSelection = playerChoice()
 const computerSelection = computerChoice()
 const winner =checkWinner(playerSelection, computerSelection);
 winners.push(winner);
+logRound(playerSelection, computerSelection, winner, round);
 }
 
-//player can't break function
 function playerChoice () {
     let input = prompt("Type Rock, Paper, or Scissors");
     while (input == null) {
@@ -69,6 +69,12 @@ function logWins(){
     console.log("Player Wins", playerWins);
     console.log("Computer Wins", computerWins);
     console.log("Ties", ties);
-
 }
-game();
+
+function logRound(playerChoice,computerChoice,winner,round){
+    console.log('Round:', round);
+    console.log('Player Chose:', playerChoice);
+    console.log('Computer Chose:', computerChoice);
+    console.log(winner, 'Won The Round');
+    console.log("-----------------------------");
+}
