@@ -17,7 +17,15 @@ function playerChoice () {
 }
     input = input.toLowerCase();
     let check = validateInput(input);
-    if (check == true) {
+    while (check == false) {
+     input = prompt (
+            "Type Rock, Paper, or Scissors. Spelling needs to be exact!"
+        );
+        while (input == null) {
+            input = prompt("Type Rock, Paper, or Scissors");
+    }
+        input = input.toLowerCase();
+        check = validateInput(input);
         console.log(input);
     }
 }
@@ -28,10 +36,7 @@ function computerChoice(){
 }
 
 function validateInput(choice){
-    if (choices.includes(choice)) {
-        return true;
-    } 
-    return false;
+    return choices.includes(choice);
 }
 
 
